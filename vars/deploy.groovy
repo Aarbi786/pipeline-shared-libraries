@@ -1,3 +1,8 @@
-def call(){
-  sh "docker-compose down && docker-compose up -d"
+def call() {
+    sh '''
+        echo "Stopping old containers..."
+        docker compose down || true
+        echo "Starting new containers..."
+        docker compose up -d
+    '''
 }
